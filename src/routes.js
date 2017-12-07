@@ -8,7 +8,7 @@ import NoticePage from './containers/NoticePage';
 
 export const routeArray = [
     {
-        path: '/home',
+        path: '/',
         exact: true,
         replace: true,
         component: HomePage,
