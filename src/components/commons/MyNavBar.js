@@ -10,9 +10,8 @@ class MyNavBar extends Component {
 
     render() {
         let splitUrls = this.props.history.location.pathname.split('/');
-        
         const currentRoute = routeArray.find((route) => {
-            if (splitUrls) {
+            if (splitUrls[1]) {
                 let regExp = null;
                 if (route.path === '*') {
                     regExp = new RegExp('.*');
@@ -20,11 +19,9 @@ class MyNavBar extends Component {
                     regExp = new RegExp(route.name);
                 }
                 return regExp.test(splitUrls[1]);
-            } else {
-                return false;
             }
+            return false;
         });
-        console.log(currentRoute);
         const titleName = currentRoute && currentRoute.chsName;
         return (
             <NavBar leftContent="后退"

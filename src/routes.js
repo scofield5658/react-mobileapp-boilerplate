@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router';
+import { Switch, Route, Redirect } from 'react-router';
 
 import BasePage from './containers/BasePage';
 import HomePage from './containers/HomePage';
@@ -40,6 +40,9 @@ export const routeArray = [
 
 export default (
     <Switch>
+        <Route exact path="/" render={() => (
+            <Redirect to="/home" />
+        )} />   
         {routeArray.map((route,index) => {
             return <Route key={index} exact={route.exact} path={route.path} component={route.component} />;
         })}

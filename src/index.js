@@ -10,11 +10,9 @@ import './index.css';
 import routes from './routes';
 
 const syncHistoryWithStore = (store, history) => {
-    const { router } = store.getState();
-    if(router && router.location) {
-        history.replace(router.location);
-    } else {
-        history.replace('/home');
+    const { routing } = store.getState();
+    if(routing && routing.location) {
+        history.replace(routing.location);
     }
 };
 
