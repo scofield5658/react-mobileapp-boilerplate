@@ -8,7 +8,7 @@ import NoticePage from './containers/NoticePage';
 
 export const routeArray = [
     {
-        path: '/',
+        path: '/home',
         exact: true,
         replace: true,
         component: HomePage,
@@ -29,7 +29,7 @@ export const routeArray = [
         name: 'notice',
         chsName: '通知助手'
     }, {
-        path: '',
+        path: '*',
         exact: false,
         replace: true,
         component: BasePage,

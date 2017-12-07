@@ -10,14 +10,22 @@ class MyNavBar extends Component {
 
     render() {
         let splitUrls = this.props.history.location.pathname.split('/');
-        const currentRoute = routeArray.filter((route) => {
+        
+        const currentRoute = routeArray.find((route) => {
             if (splitUrls) {
-                return splitUrls[1] === route.name;
+                let regExp = null;
+                if (route.path === '*') {
+                    regExp = new RegExp('.*');
+                } else {
+                    regExp = new RegExp(route.name);
+                }
+                return regExp.test(splitUrls[1]);
             } else {
                 return false;
             }
         });
-        const titleName = this.props.titleName || currentRoute.length > 0 ?  currentRoute[0].chsName : '未找到';
+        console.log(currentRoute);
+        const titleName = currentRoute && currentRoute.chsName;
         return (
             <NavBar leftContent="后退"
                 mode="dark"

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
+import { push, replace } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
 import userActions from '../actions/user';
 import Home from '../components/Home';
@@ -19,6 +19,7 @@ const mapDispatchToProps = (dispatch) => {
         },
         onLogout: () => {
             user.logout();
+            dispatch(replace('/home'));
         }
     };
 };
